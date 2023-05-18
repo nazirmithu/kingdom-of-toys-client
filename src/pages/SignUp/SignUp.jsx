@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import GoogleLogin from '../Shared/GoogleLogin/GoogleLogin';
 
 
 const SignUp = () => {
-    const {createUser}= useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -65,7 +66,7 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p className='my-4 text-center'>Already Have an Account? <Link className='text-orange-600 font-bold' to='/login'>Login</Link></p>
-
+                        <GoogleLogin></GoogleLogin>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import GoogleLogin from "../Shared/GoogleLogin/GoogleLogin";
 
 const Login = () => {
     const { handleSignIn } = useContext(AuthContext);
@@ -49,7 +50,7 @@ const Login = () => {
                             </div>
                         </form>
                         <p className='my-4 text-center'>New to Kingdom of Toys? <Link className='text-rose-600 font-bold' to='/signup'>Sign Up</Link></p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <GoogleLogin></GoogleLogin>
                     </div>
                 </div>
             </div>
