@@ -38,8 +38,14 @@ const NavBar = () => {
                     <li><NavLink to='/blogs'>Blogs</NavLink></li>
                 </ul>
             </div>
+            
             <div className="navbar-end">
                 <a className="btn">Get started</a>
+            </div>
+            <div className="avatar">
+                <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <img src={Logo} />
+                </div>
             </div>
         </div>
     );
