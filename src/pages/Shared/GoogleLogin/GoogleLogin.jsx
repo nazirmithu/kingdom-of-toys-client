@@ -17,7 +17,7 @@ const GoogleLogin = () => {
     }
     return (
         <div className="text-center">
-            <button onClick={handleGooglePopup} className="btn btn-outline btn-info gap-2"><FaGoogle /> Login with Google</button>
+            <button onClick={handleGooglePopup} className="btn btn-outline btn-success gap-2"><FaGoogle /> Login with Google</button>
         </div>
     );
 };

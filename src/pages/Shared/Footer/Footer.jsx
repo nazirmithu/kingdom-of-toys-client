@@ -3,7 +3,7 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaInstagramSquare, FaTwitter, FaYo
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-black text-base-content">
+        <footer className="footer p-20 bg-black text-base-content">
             <div className='text-white'>
                 <img className='w-10 rounded-full' src={Logo} alt="" />
                 <p>Kingdom of Toys</p>
@@ -26,7 +26,7 @@ const Footer = () => {
             </div>
             <div className='text-white'>
                 <span className="footer-title">Social</span>
-                <div className="grid grid-flow-col gap-4">
+                <div className="grid grid-flow-col  gap-4">
                     <a href='https://twitter.com/'>
                         <FaTwitter className="mr-2" />
                     </a>

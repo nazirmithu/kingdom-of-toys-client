@@ -1,7 +1,16 @@
 import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../../assets/logo.svg'
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const NavBar = () => {
+    const { user, handleSignOut, loading } = useContext(AuthContext);
+
+    if (loading) {
+        return <progress className="progress w-56"></progress>
+    }
+
+
     return (
         <div className="navbar bg-purple-100">
             <div className="navbar-start">
@@ -34,20 +43,37 @@ const NavBar = () => {
                         </NavLink>
                     </li>
                     <li><NavLink>My Toys</NavLink></li>
-                    <li><NavLink>Add A Toys</NavLink></li>
+                    <li><NavLink to='/addtoys'>Add Toys</NavLink></li>
                     <li><NavLink to='/blogs'>Blogs</NavLink></li>
+                    {
+                        user ? <li>
+                            <div className="dropdown dropdown-end">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user.photoURL} />
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} >
+                                    <li>
+                                        <a className="justify-between">
+                                            {
+                                                user?.displayName
+                                            },
+                                        </a>
+                                    </li>
+
+                                    <li><button className='btn btn-primary text-white' onClick={handleSignOut}>Logout</button></li>
+                                </ul>
+                            </div>
+                        </li>
+                            :
+                            <li><NavLink to="/login"><button className='btn btn-primary'>Login</button></NavLink></li>
+                    }
                 </ul>
+
             </div>
-            
-            <div className="navbar-end">
-                <a className="btn">Get started</a>
-                <a className="btn">Get started</a>
-            </div>
-            <div className="avatar">
-                <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    <img src={Logo} />
-                </div>
-            </div>
+
+
         </div>
     );
 };
