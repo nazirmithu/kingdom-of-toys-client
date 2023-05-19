@@ -1,117 +1,108 @@
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../providers/AuthProvider";
+import Swal from 'sweetalert2';
 
 const AddToys = () => {
+    const { user } = useContext(AuthContext);
 
-    const handleAddToy = event => {
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const sellername = form.sellername.value;
-        const selleremail = form.selleremail.value;
-        const subcategory = form.subcategory.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const quantity = form.quantity.value;
-        const description = form.description.value;
-        const photo = form.photo.value;
-        const newToy = {name, sellername, selleremail, subcategory, price, rating, quantity, description, photo}
-
-        console.log(newToy)
-
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = (data) => {
+        console.log(data);
+        fetch('http://localhost:5000/addtoys', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+                if (result.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Toy Add Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
+        console.log(data)
     }
 
-
     return (
-        <div className=' bg-purple-100 p-24 mt-40 mb-40 rounded-3xl'>
-            <h2 className='text-5xl text-center text-purple-600 font-bold mb-20'>Add Toys</h2>
-            <form onSubmit={handleAddToy}>
-                {/* from row */}
-                <div className='md:flex'>
-                    <div className="form-control md:w-1/2 mr-8">
-                        <label className="label">
-                            <span className="label-text">Toy Name</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" name='name' placeholder="Toy Name" className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                    <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text">Seller Name</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" name='sellername' placeholder="Seller Name" className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                </div>
-                {/* from row */}
-                <div className='md:flex'>
-                    <div className="form-control md:w-1/2 mr-8">
-                        <label className="label">
-                            <span className="label-text">Seller Email</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" name='selleremail' placeholder="Seller Email" className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                    <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text">Sub Category </span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" name='subcategory ' placeholder="Sub Category " className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                </div>
-                {/* from row */}
-                <div className='md:flex'>
-                    <div className="form-control md:w-1/2 mr-8">
-                        <label className="label">
-                            <span className="label-text">Price</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" name='price' placeholder="Price" className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                    <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text">Rating</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" name='rating' placeholder="Rating" className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                </div>
-                {/* from row */}
-                <div className='md:flex'>
-                    <div className="form-control md:w-1/2 mr-8">
-                        <label className="label">
-                            <span className="label-text">Available quantity</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" name='quantity' placeholder="Available quantity" className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                    <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text">Detail description</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" name='description' placeholder="Detail description" className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                </div>
-                <div className=''>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Picture URL Of The Toy</span>
-                        </label>
-                        <label className="input-group">
-                            <input type="text" name='photo' placeholder="Picture URL Of The Toy" className="input input-bordered w-full" />
-                        </label>
-                    </div>
-                </div>
-            <input type="submit" value="Add Toys" className="btn btn-block mt-8" />
-            </form>
+        <div className=" bg-purple-100 p-24 mt-40 mb-40 rounded-3xl">
+            <div>
+                <h2 className="mb-20 text-5xl text-center text-purple-600 font-bold mb-20'">Add Toys</h2>
+                <form onSubmit={handleSubmit(onSubmit)}>
+
+                    <input className="mb-2 input input-bordered w-1/2"
+                        {...register("toy_name", { required: true })}
+                        type="text"
+                        placeholder="Toy Name"
+                    />
+
+                    <input className="input input-bordered w-1/2"
+                        {...register("seller_name", { required: true })}
+                        type="text"
+                        value={user?.displayName}
+                        placeholder="Seller Name" />
+
+                    <input className="mb-2 input input-bordered w-1/2"
+                        {...register("seller_email")}
+                        type="email"
+                        value={user?.email}
+                        placeholder="Seller Email"
+                    />
+
+                    <select {...register("category")}>
+                        <option value="SuperCars">Super Cars</option>
+                        <option value="MiniPoliceCar">Mini Police Car</option>
+                        <option value="MiniFireTruck">Mini Fire Truck</option>
+                    </select>
+
+                    <input className="input input-bordered w-1/2"
+                        {...register("sub_category", { required: true })}
+                        type="text"
+                        placeholder="Sub Category "
+                    />
+
+                    <input className="mb-2 input input-bordered w-1/2"
+                        defaultValue="" {...register("price", { required: true })}
+                        type="number"
+                        placeholder="Price"
+                    />
+
+                    <input className="input input-bordered w-1/2"
+                        {...register("rating", { required: true })}
+                        type="text"
+                        placeholder="Rating"
+                    />
+
+                    <input className="mb-2 input input-bordered w-1/2"
+                        {...register("quantity", { required: true })}
+                        type="number"
+                        placeholder="Available quantity"
+                    />
+
+                    <input className="input input-bordered w-1/2"
+                        {...register("description", { required: true })}
+                        type="text"
+                        placeholder="Detail description"
+                    />
+
+                    <input className="input input-bordered w-1/2"
+                        {...register("picture", { required: true })}
+                        type="photo"
+                        placeholder="Picture URL Of The Toy"
+                    />
+
+                    {errors.exampleRequired && <span>This field is required</span>}
+
+                    <input type="submit" value="Add Toys" className="btn btn-block mt-8" />
+                </form>
+            </div>
         </div>
     );
 };

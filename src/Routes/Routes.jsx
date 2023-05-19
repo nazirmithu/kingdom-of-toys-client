@@ -4,10 +4,11 @@ import Home from "../pages/Home/Home/Home";
 import Blogs from "../pages/Blogs/Blogs";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
-import AllToys from "./AllToys";
+
 import SingleToy from "./SingleToy";
 import SingleToyDetails from "./SingleToyDetails";
 import AddToys from "./AddToys";
+import AllToys from "./AllToys/AllToys";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +33,8 @@ const router = createBrowserRouter([
         },
         {
           path:'/alltoys',
-          element: <AllToys></AllToys>
+          element: <AllToys></AllToys>,
+          loader: ()=> fetch('http://localhost:5000/alltoys')
         },
         {
           path:'/singletoy',
