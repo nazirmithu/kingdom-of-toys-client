@@ -11,7 +11,7 @@ const UpdateMyToys = () => {
     const onSubmit = (data) => {
         console.log(data);
         fetch(`http://localhost:5000/alltoys/:${_id}`, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
             },

@@ -51,7 +51,7 @@ const AllToys = () => {
                         <tbody className="text-center">
 
                             {
-                                allToys.map((allToy) => <>
+                                allToys.map(allToy => <>
                                     <tr>
                                         <th>
                                             <label>
