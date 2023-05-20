@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
-
 const MyToys = () => {
-    const { user } = useContext(AuthContext);
+    const { user, id } = useContext(AuthContext);
     const [myToys, setMyToys] = useState([]);
 
 
@@ -15,6 +15,36 @@ const MyToys = () => {
                 setMyToys(data)
             })
     }, [user])
+
+    const handleDelete = id => {
+        console.log(id)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/mytoys/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your toy has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
 
     return (
         <div className="mt-24">
@@ -39,7 +69,7 @@ const MyToys = () => {
                     </thead>
                     <tbody className="text-center">
                         {
-                            myToys.map((myToy, index) => <>
+                            myToys.map((myToy) => <>
                                 <tr>
                                     <th>
                                         <label>
@@ -60,10 +90,12 @@ const MyToys = () => {
                                     <td>{myToy.price}</td>
                                     <td>{myToy.quantity}</td>
                                     <th>
-                                        <button className="btn btn-outline btn-info">Edit</button>
+                                        <Link to={`/updatetoys/${id}`}>
+                                            <button className="btn btn-outline btn-info">Edit</button>
+                                        </Link>
                                     </th>
                                     <th>
-                                        <button className="btn btn-outline btn-info">Delete</button>
+                                        <button onClick={() => handleDelete(id)} className="btn btn-outline btn-info">Delete</button>
                                     </th>
                                 </tr>
                             </>)
