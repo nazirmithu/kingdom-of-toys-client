@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
 const MyToys = () => {
-    const { user, id } = useContext(AuthContext);
+    const { user, _id } = useContext(AuthContext);
     const [myToys, setMyToys] = useState([]);
 
 
@@ -16,8 +16,8 @@ const MyToys = () => {
             })
     }, [user])
 
-    const handleDelete = id => {
-        console.log(id)
+    const handleDelete = _id => {
+        console.log(_id)
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -28,7 +28,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/mytoys/${id}`, {
+                fetch(`http://localhost:5000/alltoys/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -40,6 +40,8 @@ const MyToys = () => {
                                 'Your toy has been deleted.',
                                 'success'
                             )
+                            const remaining = myToys.filter(myToy => myToy._id !== _id)
+                            setMyToys(remaining);
                         }
                     })
             }
@@ -63,7 +65,7 @@ const MyToys = () => {
                             <th>Sub Category</th>
                             <th>Price</th>
                             <th>Available Quantity</th>
-                            <th>Edit</th>
+                            <th>Update</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -90,12 +92,12 @@ const MyToys = () => {
                                     <td>{myToy.price}</td>
                                     <td>{myToy.quantity}</td>
                                     <th>
-                                        <Link to={`/updatetoys/${id}`}>
-                                            <button className="btn btn-outline btn-info">Edit</button>
+                                        <Link to={`/updatetoys/${_id}`}>
+                                            <button className="btn btn-outline btn-info">Update</button>
                                         </Link>
                                     </th>
                                     <th>
-                                        <button onClick={() => handleDelete(id)} className="btn btn-outline btn-info">Delete</button>
+                                        <button onClick={() => handleDelete(_id)} className="btn btn-outline btn-info">Delete</button>
                                     </th>
                                 </tr>
                             </>)

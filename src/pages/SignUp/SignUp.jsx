@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import GoogleLogin from '../Shared/GoogleLogin/GoogleLogin';
 
@@ -9,6 +9,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const navigate = useNavigate();
+    const location = useLocation();
     const from = location.state?.from?.pathname || '/'
     
     const handleSignUp = event => {

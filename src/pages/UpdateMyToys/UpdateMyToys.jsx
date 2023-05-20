@@ -5,13 +5,13 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const UpdateMyToys = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, _id } = useContext(AuthContext);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         console.log(data);
-        fetch('http://localhost:5000/addtoys', {
-            method: 'POST',
+        fetch(`http://localhost:5000/alltoys/:${_id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -20,10 +20,10 @@ const UpdateMyToys = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result)
-                if (result.insertedId) {
+                if (result.modifiedCount) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Toy Add Successfully',
+                        text: 'Toy Information Updated Successfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
@@ -39,46 +39,9 @@ const UpdateMyToys = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
 
                     <input className="mb-2 input input-bordered w-1/2"
-                        {...register("toy_name", { required: true })}
-                        type="text"
-                        placeholder="Toy Name"
-                    />
-
-                    <input className="input input-bordered w-1/2"
-                        {...register("seller_name", { required: true })}
-                        type="text"
-                        // value={user?.displayName}
-                        placeholder="Seller Name" />
-
-                    <input className="mb-2 input input-bordered w-1/2"
-                        {...register("seller_email")}
-                        type="email"
-                        // value={user?.email}
-                        placeholder="Seller Email"
-                    />
-
-                    <select {...register("category")}>
-                        <option value="SuperCars">Super Cars</option>
-                        <option value="MiniPoliceCar">Mini Police Car</option>
-                        <option value="MiniFireTruck">Mini Fire Truck</option>
-                    </select>
-
-                    <input className="input input-bordered w-1/2"
-                        {...register("sub_category", { required: true })}
-                        type="text"
-                        placeholder="Sub Category "
-                    />
-
-                    <input className="mb-2 input input-bordered w-1/2"
                         defaultValue="" {...register("price", { required: true })}
                         type="number"
                         placeholder="Price"
-                    />
-
-                    <input className="input input-bordered w-1/2"
-                        {...register("rating", { required: true })}
-                        type="text"
-                        placeholder="Rating"
                     />
 
                     <input className="mb-2 input input-bordered w-1/2"
@@ -92,16 +55,10 @@ const UpdateMyToys = () => {
                         type="text"
                         placeholder="Detail description"
                     />
-
-                    <input className="input input-bordered w-1/2"
-                        {...register("picture", { required: true })}
-                        type="photo"
-                        placeholder="Picture URL Of The Toy"
-                    />
-
+                    3
                     {errors.exampleRequired && <span>This field is required</span>}
 
-                    <input type="submit" value="Add Toys" className="btn btn-block mt-8" />
+                    <input type="submit" value="Update Toys" className="btn btn-block mt-8" />
                 </form>
             </div>
         </div>

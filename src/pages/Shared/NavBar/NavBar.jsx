@@ -4,12 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const NavBar = () => {
-    const { user, handleSignOut, loading } = useContext(AuthContext);
-
-    if (loading) {
-        return <progress className="progress w-56"></progress>
-    }
-
+    const { user, handleSignOut } = useContext(AuthContext);
 
     return (
         <div className="navbar bg-purple-100">
