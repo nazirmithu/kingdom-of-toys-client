@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import GoogleLogin from "../Shared/GoogleLogin/GoogleLogin";
 
 const Login = () => {
     const { handleSignIn } = useContext(AuthContext);
-
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = event => {
         event.preventDefault();
@@ -17,6 +18,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error)
@@ -50,7 +52,7 @@ const Login = () => {
                             </div>
                         </form>
                         <p className='my-4 text-center'>New to Kingdom of Toys? <Link className='text-rose-600 font-bold' to='/signup'>Sign Up</Link></p>
-                        <GoogleLogin></GoogleLogin>
+                        <GoogleLogin></GoogleLogin>                        
                     </div>
                 </div>
             </div>

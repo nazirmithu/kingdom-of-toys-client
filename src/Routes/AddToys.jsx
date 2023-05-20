@@ -46,13 +46,13 @@ const AddToys = () => {
                     <input className="input input-bordered w-1/2"
                         {...register("seller_name", { required: true })}
                         type="text"
-                        value={user?.displayName}
+                        // value={user?.displayName}
                         placeholder="Seller Name" />
 
                     <input className="mb-2 input input-bordered w-1/2"
                         {...register("seller_email")}
                         type="email"
-                        value={user?.email}
+                        // value={user?.email}
                         placeholder="Seller Email"
                     />
 

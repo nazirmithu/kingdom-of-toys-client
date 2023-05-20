@@ -1,12 +1,16 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import GoogleLogin from '../Shared/GoogleLogin/GoogleLogin';
 
 
 const SignUp = () => {
     const { createUser } = useContext(AuthContext);
-
+    const [password, setPassword] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/'
+    
     const handleSignUp = event => {
         event.preventDefault();
         const form = event.target;
@@ -14,16 +18,29 @@ const SignUp = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, photo, password)
+        console.log(name, email, password, photo)
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
             })
+    }
+
+    const handlePassword = (event) => {
+        const passwordInput = event.target.value;
+        setPassword(passwordInput);
+
+        if (passwordInput.length < 6) {
+            setPasswordError("Password must at list 6 characters");
+        }
+        else {
+            setPasswordError("");
+        }
     }
 
     return (
@@ -54,9 +71,15 @@ const SignUp = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Confirm Password</span>
+                                    <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="Your Password" className="input input-bordered" />
+                                {passwordError && <span className='text-red-500'>{passwordError}</span>}
+                                <input type="password" 
+                                name='password' 
+                                value={password}
+                                onChange={handlePassword}
+                                placeholder="Your Password" 
+                                className="input input-bordered" />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
