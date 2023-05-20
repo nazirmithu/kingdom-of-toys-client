@@ -28,7 +28,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/alltoys/${_id}`, {
+                fetch(`http://localhost:5000/mytoys/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -92,12 +92,12 @@ const MyToys = () => {
                                     <td>{myToy.price}</td>
                                     <td>{myToy.quantity}</td>
                                     <th>
-                                        <Link to={`/updatetoys/${_id}`}>
+                                        <Link to={`/updatetoys/${myToy._id}`}>
                                             <button className="btn btn-outline btn-info">Update</button>
                                         </Link>
                                     </th>
                                     <th>
-                                        <button onClick={() => handleDelete(_id)} className="btn btn-outline btn-info">Delete</button>
+                                        <button onClick={() => handleDelete(myToy._id)} className="btn btn-outline btn-info">Delete</button>
                                     </th>
                                 </tr>
                             </>)

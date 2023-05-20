@@ -8,6 +8,7 @@ const SingleToyDetails = () => {
     //     quantity, description, rating,
     //     seller_email, seller_name
     // } = toyDetails;
+    console.log(toyDetails)
 
     return (
         <div>

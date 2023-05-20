@@ -12,7 +12,8 @@ const AllToys = () => {
         fetch(`http://localhost:5000/toysearch/${searchText}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                console.log(searchText)
+                setSearchText(data)
             })
     }
 
@@ -74,7 +75,7 @@ const AllToys = () => {
                                         <td>{allToy.price}</td>
                                         <td>{allToy.quantity}</td>
                                         <th>
-                                            <Link to={`/toy/${_id}`}>
+                                            <Link to={`/toy/${allToy._id}`}>
                                                 <button className="btn btn-outline btn-info">Details</button>
                                             </Link>
 

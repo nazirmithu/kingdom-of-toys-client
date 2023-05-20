@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -8,18 +9,18 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
-    
-  
+
+
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        
+
         handleSignIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
                 navigate(from, { replace: true })
             })
             .catch(error => {
@@ -54,7 +55,7 @@ const Login = () => {
                             </div>
                         </form>
                         <p className='my-4 text-center'>New to Kingdom of Toys? <Link className='text-rose-600 font-bold' to='/signup'>Sign Up</Link></p>
-                        <GoogleLogin></GoogleLogin>                        
+                        <GoogleLogin></GoogleLogin>
                     </div>
                 </div>
             </div>

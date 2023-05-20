@@ -27,10 +27,11 @@ const NavBar = () => {
                     {
                         user ? <>
                             <li><NavLink to='/addtoys'>Add Toys</NavLink></li>
-                            <li><NavLink to='/blogs'>Blogs</NavLink></li>
-                        </> : ''
+                            <li><NavLink to='/mytoys'>My Toys</NavLink></li>
+                            
+                        </> : ""
                     }
-                    <li><NavLink to='/mytoys'>My Toys</NavLink></li>
+                    <li><NavLink to='/blogs'>Blogs</NavLink></li>
 
                     {
                         user ? <li>

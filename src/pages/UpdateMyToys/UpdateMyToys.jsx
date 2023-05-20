@@ -55,7 +55,7 @@ const UpdateMyToys = () => {
                         type="text"
                         placeholder="Detail description"
                     />
-                    3
+                    
                     {errors.exampleRequired && <span>This field is required</span>}
 
                     <input type="submit" value="Update Toys" className="btn btn-block mt-8" />
