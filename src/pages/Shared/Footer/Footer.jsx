@@ -3,7 +3,7 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaInstagramSquare, FaTwitter, FaYo
 
 const Footer = () => {
     return (
-        <footer className="footer p-20 bg-black text-base-content">
+        <footer className="footer mt-32 p-20 bg-black text-base-content">
             <div className='text-white'>
                 <img className='w-10 rounded-full' src={Logo} alt="" />
                 <p>Kingdom of Toys</p>
