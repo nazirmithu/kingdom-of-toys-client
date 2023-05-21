@@ -32,22 +32,54 @@ const Blogs = () => {
             <p>
                 Type: SQL databases are primarily called Relational Databases whereas NoSQL databases are primarily called non-relational or distributed databases.
                 <br />
-                Language: SQL databases define and manipulate data-based structured query language. Seeing from a side this language is extremely powerful. SQL is one of the most versatile and widely-used options available which makes it a safe choice, especially for great complex queries. But from another side, it can be restrictive. SQL requires you to use predefined schemas to determine the structure of your data before you work with it. Also, all of your data must follow the same structure. This can require significant up-front preparation which means that a change in the structure would be both difficult and disruptive to your whole system. A NoSQL database has a dynamic schema for unstructured data. Data is stored in many ways which means it can be document-oriented, column-oriented, graph-based, or organized as a key-value store. This flexibility means that documents can be created without having a defined structure first. Also, each document can have its own unique structure. The syntax varies from database to database, and you can add fields as you go.Property followed 
-SQL databases follow ACID properties (Atomicity, Consistency, Isolation, and Durability) whereas the NoSQL database follows the Brewers CAP theorem (Consistency, Availability, and Partition tolerance). 
-**Great support is available for all SQL databases from their vendors. Also, a lot of independent consultants are there who can help you with SQL databases for very large-scale deployments but for some NoSQL databases you still have to rely on community support and only limited outside experts are available for setting up and deploying your large-scale NoSQL deploy
-Structure: SQL databases are table-based on the other hand NoSQL databases are either key-value pairs, document-based, graph databases, or wide-column stores. This makes relational SQL databases a better option for applications that require multi-row transactions such as an accounting system or for legacy systems that were built for a relational structure. 
+                Language: SQL databases define and manipulate data-based structured query language. Seeing from a side this language is extremely powerful. SQL is one of the most versatile and widely-used options available which makes it a safe choice, especially for great complex queries. But from another side, it can be restrictive. SQL requires you to use predefined schemas to determine the structure of your data before you work with it. Also, all of your data must follow the same structure. This can require significant up-front preparation which means that a change in the structure would be both difficult and disruptive to your whole system. A NoSQL database has a dynamic schema for unstructured data. Data is stored in many ways which means it can be document-oriented, column-oriented, graph-based, or organized as a key-value store. This flexibility means that documents can be created without having a defined structure first. Also, each document can have its own unique structure. The syntax varies from database to database, and you can add fields as you go.Property followed
+                SQL databases follow ACID properties (Atomicity, Consistency, Isolation, and Durability) whereas the NoSQL database follows the Brewers CAP theorem (Consistency, Availability, and Partition tolerance).
+                **Great support is available for all SQL databases from their vendors. Also, a lot of independent consultants are there who can help you with SQL databases for very large-scale deployments but for some NoSQL databases you still have to rely on community support and only limited outside experts are available for setting up and deploying your large-scale NoSQL deploy
+                Structure: SQL databases are table-based on the other hand NoSQL databases are either key-value pairs, document-based, graph databases, or wide-column stores. This makes relational SQL databases a better option for applications that require multi-row transactions such as an accounting system or for legacy systems that were built for a relational structure.
 
-Property followed: SQL databases follow ACID properties (Atomicity, Consistency, Isolation, and Durability) whereas the NoSQL database follows the Brewers CAP theorem (Consistency, Availability, and Partition tolerance). 
+                Property followed: SQL databases follow ACID properties (Atomicity, Consistency, Isolation, and Durability) whereas the NoSQL database follows the Brewers CAP theorem (Consistency, Availability, and Partition tolerance).
 
-Support: Great support is available for all SQL databases from their vendors. Also, a lot of independent consultants are there who can help you with SQL databases for very large-scale deployments but for some NoSQL databases you still have to rely on community support and only limited outside experts are available for setting up and deploying your large-scale NoSQL deploy. 
+                Support: Great support is available for all SQL databases from their vendors. Also, a lot of independent consultants are there who can help you with SQL databases for very large-scale deployments but for some NoSQL databases you still have to rely on community support and only limited outside experts are available for setting up and deploying your large-scale NoSQL deploy.
 
 
 
 
 
             </p>
-            <h1 className="font-bold">What is express js? What is Nest JS?</h1>
-
+            <h1 className="font-bold">Question 3: What is express js? What is Nest JS?</h1>
+            <p>
+                Express JS: Express is a node js web application framework that provides broad features for building web and mobile applications. It is used to build a single page, multipage, and hybrid web application. It's a layer built on the top of the Node js that helps manage servers and routes
+                The reason behind creating an express framework for node js is:
+                <ul>
+                    <li>Time-efficient</li>
+                    <li>Fast </li>
+                    <li>Economical</li>
+                    <li>Easy to learn</li>
+                    <li>Asynchronous</li>
+                </ul>
+            </p>
+            <br />
+            <p>
+                Node JS:NestJS is a progressive Node. js framework that helps build server-side applications. Nest extends Node. js frameworks like Express or Fastify adding modular organization and a wide range of other libraries to take care of repetitive tasks.
+            </p>
+            <br />
+            <h1>Question 4: What is MongoDB aggregate and how does it work?</h1>
+            <br />
+            <p>
+                MongoDB is a database management system that allows you to store large amounts of data in documents that are held within larger structures known as collections. You can run queries on collections to retrieve a subset of documents matching given conditions, but MongoDB’s query mechanism doesn’t allow you to group or transform the returned data. This means your options for performing meaningful data analysis with MongoDB’s query mechanism alone are limited.
+                <br />
+                <p>MongoDB aggregate operation works:</p>
+                <br />
+                <ul>
+                    <li>1. Data Source: The aggregate operation takes a collection as its input data source.</li>
+                    <li>2. Pipeline Stages: The aggregate operation applies a series of pipeline stages to the data source. Each stage performs a specific operation on the data and passes the transformed data to the next stage in the pipeline.</li>
+                    <li>3. Pipeline Operators: Each stage in the pipeline utilizes various aggregation operators to perform operations such as filtering, grouping, projecting fields, sorting, joining, calculating aggregations , and more. These operators are used to shape the data according to the desired output.</li>
+                    <li>4. Data Transformation: As the data flows through the pipeline stages, it undergoes transformations based on the specified operators. For example, you can filter documents based on specific conditions, group documents by a field, calculate aggregate values within groups, sort the output, and perform other operations.</li>
+                    <li>5. Final Output: After passing through all the stages in the pipeline, the aggregate operation returns the final output based on the transformations applied. The output can be a single document, multiple documents, or even a new collection.</li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </p>
         </div>
     );
 };
