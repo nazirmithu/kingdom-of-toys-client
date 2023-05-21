@@ -1,4 +1,6 @@
 import { useLoaderData } from "react-router-dom";
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
 
 
 const SingleToyDetails = () => {
@@ -11,17 +13,18 @@ const SingleToyDetails = () => {
     console.log(toyDetails)
 
     return (
-        <div>
-            <h2>single toy details page: {toyDetails.length}</h2>
-            <div className="card w-96 bg-base-100 shadow-xl">
-                <figure><img src={toyDetails.picture} alt="Shoes" /></figure>
+        <div className="mt-28 ">
+            <p className="text-purple-500 text-center text-3xl font-bold mb-28">Single Toy Details</p>
+            <div className="card bg-purple-100 w-full shadow-2xl p-8">
+                <figure><img className="w-full" src={toyDetails.picture} alt="" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">{toyDetails.toy_name}</h2>
-                    <p>{toyDetails.seller_name}</p>
-                    <p>{toyDetails.seller_email}</p>
-                    <p>{toyDetails.rating}</p>
-                    <p>{toyDetails.quantity}</p>
-                    <p>{toyDetails.description}</p>
+                    <h2 className="card-title">Toy Name: {toyDetails.toy_name}</h2>
+                    <p>Seller Name: {toyDetails.seller_name}</p>
+                    <p>Seller Email:{toyDetails.seller_email}</p>
+                    <Rating style={{ maxWidth: 150 }} value={toyDetails.rating} readOnly />
+                    <p>Price: ${toyDetails.price}</p>
+                    <p>Quantity: {toyDetails.quantity}</p>
+                    <p>Description: {toyDetails.description}</p>
                 </div>
             </div>
 

@@ -40,11 +40,6 @@ const Blogs = () => {
                 Property followed: SQL databases follow ACID properties (Atomicity, Consistency, Isolation, and Durability) whereas the NoSQL database follows the Brewers CAP theorem (Consistency, Availability, and Partition tolerance).
 
                 Support: Great support is available for all SQL databases from their vendors. Also, a lot of independent consultants are there who can help you with SQL databases for very large-scale deployments but for some NoSQL databases you still have to rely on community support and only limited outside experts are available for setting up and deploying your large-scale NoSQL deploy.
-
-
-
-
-
             </p>
             <h1 className="font-bold">Question 3: What is express js? What is Nest JS?</h1>
             <p>
@@ -68,7 +63,7 @@ const Blogs = () => {
             <p>
                 MongoDB is a database management system that allows you to store large amounts of data in documents that are held within larger structures known as collections. You can run queries on collections to retrieve a subset of documents matching given conditions, but MongoDB’s query mechanism doesn’t allow you to group or transform the returned data. This means your options for performing meaningful data analysis with MongoDB’s query mechanism alone are limited.
                 <br />
-                <p>MongoDB aggregate operation works:</p>
+                <p className="font-bold">Question 4: MongoDB aggregate operation works:</p>
                 <br />
                 <ul>
                     <li>1. Data Source: The aggregate operation takes a collection as its input data source.</li>
