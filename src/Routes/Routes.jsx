@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       {
         path: '/alltoys',
         element: <AllToys></AllToys>,
-        loader: () => fetch('http://localhost:5000/alltoys')
+        loader: () => fetch('https://kingdom-toys-server-nazirmithu.vercel.app/alltoys')
       },
       {
         path: '/mytoys',
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: '/toy/:id',
         element: <PrivateRoute><SingleToyDetails></SingleToyDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`)
+        loader: ({ params }) => fetch(`https://kingdom-toys-server-nazirmithu.vercel.app/toy/${params.id}`)
       },
       {
         path: '/addtoys',
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       {
         path: '/updatetoys/:id',
         element: <PrivateRoute><UpdateMyToys></UpdateMyToys></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/alltoys/${params.id}`)
+        loader: ({ params }) => fetch(`https://kingdom-toys-server-nazirmithu.vercel.app/alltoys/${params.id}`)
       },
       {
         path: '/reacttabs',

@@ -5,11 +5,12 @@ import Swal from 'sweetalert2';
 
 const AddToys = () => {
     const { user } = useContext(AuthContext);
-
     const { register, handleSubmit, formState: { errors } } = useForm();
+    
     const onSubmit = (data) => {
-        console.log(data);
-        fetch('http://localhost:5000/addtoys', {
+
+
+        fetch('https://kingdom-toys-server-nazirmithu.vercel.app/addtoys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

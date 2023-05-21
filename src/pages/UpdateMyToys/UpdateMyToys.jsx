@@ -10,7 +10,7 @@ const UpdateMyToys = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         console.log(data);
-        fetch(`http://localhost:5000/alltoys/:${_id}`, {
+        fetch(`https://kingdom-toys-server-nazirmithu.vercel.app/alltoys/:${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
