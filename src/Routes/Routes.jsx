@@ -12,11 +12,13 @@ import MyToys from "./MyToys/MyToys";
 import PrivateRoute from "./PrivateRoute";
 import UpdateMyToys from "../pages/UpdateMyToys/UpdateMyToys";
 import ReactTabs from "../pages/Home/Tabs/ReactTabs";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -37,7 +39,7 @@ const router = createBrowserRouter([
       {
         path: '/alltoys',
         element: <AllToys></AllToys>,
-        loader: () => fetch('https://kingdom-of-toys-server.vercel.app/alltoys')
+        loader: () => fetch('http://localhost:5000/alltoys')
       },
       {
         path: '/mytoys',
@@ -50,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: '/toy/:id',
         element: <PrivateRoute><SingleToyDetails></SingleToyDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://kingdom-of-toys-server.vercel.app/toy/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`)
       },
       {
         path: '/addtoys',
@@ -59,7 +61,7 @@ const router = createBrowserRouter([
       {
         path: '/updatetoys/:id',
         element: <PrivateRoute><UpdateMyToys></UpdateMyToys></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://kingdom-of-toys-server.vercel.app/alltoys/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/alltoys/${params.id}`)
       },
       {
         path: '/reacttabs',

@@ -9,7 +9,7 @@ const AllToys = () => {
 
 
     const handleInputSearch = () => {
-        fetch(`https://kingdom-of-toys-server.vercel.app/toysearch/${searchText}`)
+        fetch(`http://localhost:5000/toysearch/${searchText}`)
             .then(res => res.json())
             .then(data => {
                 console.log(searchText)

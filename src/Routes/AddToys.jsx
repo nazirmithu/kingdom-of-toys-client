@@ -9,7 +9,7 @@ const AddToys = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         console.log(data);
-        fetch('https://kingdom-of-toys-server.vercel.app/addtoys', {
+        fetch('http://localhost:5000/addtoys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

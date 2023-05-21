@@ -7,9 +7,8 @@ const MyToys = () => {
     const { user, _id } = useContext(AuthContext);
     const [myToys, setMyToys] = useState([]);
 
-
     useEffect(() => {
-        fetch(`https://kingdom-of-toys-server.vercel.app/mytoys/${user?.email}`)
+        fetch(`http://localhost:5000/mytoys/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyToys(data)
@@ -28,7 +27,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://kingdom-of-toys-server.vercel.app/mytoys/${_id}`, {
+                fetch(`http://localhost:5000/mytoys/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -51,6 +50,11 @@ const MyToys = () => {
     return (
         <div className="mt-24">
             <h2 className="mb-20 text-5xl text-center text-purple-600 font-bold mb-20'">My Toys</h2>
+            <div className="btn-group btn-group-vertical mb-20 ml-96 pl-36 md:btn-group-horizontal">
+  <button className="btn btn-active">Button</button>
+  <button className="btn">Button</button>
+
+</div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead className="text-center">

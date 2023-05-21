@@ -8,7 +8,7 @@ const ReactTabs = () => {
     const [toggleState, setToggleState] = useState([]);
 
     useEffect(() => {
-        fetch('https://kingdom-of-toys-server.vercel.app/reacttabs')
+        fetch('http://localhost:5000/reacttabs')
             .then(res => res.json())
             .then(data => {
                 setToggleState(data)
